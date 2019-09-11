@@ -39,7 +39,7 @@ The `FormRequestRepository` is **mutable** service, and is shared between servic
 
 | Request method | Configured for | getFormInstance()        | getMethod()          | getData()                         | isSubmitted() | isValid() | isFresh() | getValidation() |
 | :--------------: | :--------------: | ------------------------ |:---------------------:| --------------------------------:| -------------:| ---------:| ---------:| ---------------:|
-| GET | GET | instance of (object) App\Form\Type\TestType      | (string) GET | (array) ['test' => 'i\'m empty!', 'xyz' => null] | true | true | false | (array) [] |
+| GET | GET | instance of (object) App\Form\Type\TestType      | (string) GET | model | true | true | false | (array) [] |
 | POST | GET | null      | (string) POST | null | false | true | true | (array) [] |
 
 
