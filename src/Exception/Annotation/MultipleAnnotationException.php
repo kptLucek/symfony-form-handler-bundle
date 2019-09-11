@@ -20,7 +20,13 @@ class MultipleAnnotationException extends ApiCoreException
      */
     public static function createForAnnotation(string $class, string $method, int $max = 1, int $current = 1): MultipleAnnotationException
     {
-        $message = sprintf('Annotation "%s" was not expected to be present more than %d times for method "%s", %d present', $class, $max, $method, $current);
+        $message = sprintf(
+            'Annotation "%s" was not expected to be present more than %d times for method "%s", %d present',
+            $class,
+            $max,
+            $method,
+            $current
+        );
 
         return new MultipleAnnotationException($message);
     }

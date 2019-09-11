@@ -8,7 +8,6 @@ use Lucek\FormHandlerBundle\Exception\Form\Handler\FormInstanceErrorException;
 use Lucek\FormHandlerBundle\Form\Validation\FormValidationExtractor;
 use Lucek\FormHandlerBundle\Repository\FormRequestRepository;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
-use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
@@ -37,11 +36,13 @@ class FormRequestHandler
      *
      * @param EventDispatcherInterface $eventDispatcher
      * @param FormHandlerEventFactory  $factory
+     * @param FormValidationExtractor  $validationExtractor
      */
-    public function __construct(EventDispatcherInterface $eventDispatcher, FormHandlerEventFactory $factory)
+    public function __construct(EventDispatcherInterface $eventDispatcher, FormHandlerEventFactory $factory, FormValidationExtractor $validationExtractor)
     {
-        $this->eventDispatcher = $eventDispatcher;
-        $this->factory         = $factory;
+        $this->eventDispatcher     = $eventDispatcher;
+        $this->factory             = $factory;
+        $this->validationExtractor = $validationExtractor;
     }
 
     /**

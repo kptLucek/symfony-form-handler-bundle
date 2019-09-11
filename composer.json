@@ -21,6 +21,9 @@
         "doctrine/annotations": "1.6.*",
         "lucek/symfony-controller-annotations-bundle": "^1.0"
     },
+    "suggest": {
+        "symfony/validator": "To add validation feature into your forms & proper request data handling."
+    },
     "autoload": {
         "psr-4": {
             "Lucek\\FormHandlerBundle\\": "src/"

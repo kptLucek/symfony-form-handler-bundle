@@ -17,7 +17,10 @@ class KernelRequestJsonConverter
     public function onRequest(GetResponseEvent $event): void
     {
         $request = $event->getRequest();
-        if (false === strpos($request->headers->get('Content-Type', ''), 'application/json')) {
+        if (false === strpos(
+                $request->headers->get('Content-Type', ''),
+                'application/json'
+            )) {
             return;
         }
         $data = json_decode($request->getContent(), true);

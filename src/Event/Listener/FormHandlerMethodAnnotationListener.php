@@ -2,7 +2,7 @@
 
 namespace Lucek\FormHandlerBundle\Event\Listener;
 
-use Lucek\AnnotationReaderBundle\Event\AnnotationEvent;
+use Lucek\ControllerAnnotationReaderBundle\Event\AnnotationEvent;
 use Lucek\FormHandlerBundle\Annotation\FormHandler;
 use Lucek\FormHandlerBundle\Exception\Annotation\MultipleAnnotationException;
 

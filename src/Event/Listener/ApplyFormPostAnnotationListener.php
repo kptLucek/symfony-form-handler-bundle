@@ -34,9 +34,9 @@ class ApplyFormPostAnnotationListener
      */
     public function postAnnotation(PostAnnotationEvent $event): void
     {
-        $request          = $event->getRequest();
-        $metadata         = $event->getMethodMetadata();
-        $requestMethod    = strtoupper($request->getMethod());
+        $request       = $event->getRequest();
+        $metadata      = $event->getMethodMetadata();
+        $requestMethod = strtoupper($request->getMethod());
 
         if (false === property_exists($metadata, 'form') || false === property_exists(
                 $metadata,
@@ -47,17 +47,19 @@ class ApplyFormPostAnnotationListener
 
         /** @noinspection PhpUndefinedFieldInspection */
         $forms = $metadata->form;
-        /** @noinspection PhpUndefinedFieldInspection */
-        $dataVariableKey = $metadata->data[$requestMethod];
-        $data            = null;
+
         if (0 === count($forms) || false === array_key_exists($requestMethod, $forms)) {
             return;
         }
+
+        /** @noinspection PhpUndefinedFieldInspection */
+        $dataVariableKey = $metadata->data[$requestMethod];
+        $data            = null;
 
         if (false === empty($dataVariableKey)) {
             $data = $request->attributes->get($dataVariableKey);
         }
 
-        $this->requestFactory->create($forms[$requestMethod], $request, $event->$data);
+        $this->requestFactory->create($forms[$requestMethod], $request, $data);
     }
 }

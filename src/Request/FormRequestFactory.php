@@ -66,12 +66,20 @@ class FormRequestFactory
         }
 
         if (false === is_a($formClass, AbstractType::class, true)) {
-            throw FormInstanceErrorException::notInstanceOf($formClass, AbstractType::class);
+            throw FormInstanceErrorException::notInstanceOf(
+                $formClass,
+                AbstractType::class
+            );
         }
+
         $this->repository->reset();
 
         $requestMethod = $request->getMethod();
-        $form          = $this->formFactory->create($formClass, $data, ['method' => $requestMethod]);
+        $form          = $this->formFactory->create(
+            $formClass,
+            $data,
+            ['method' => $requestMethod]
+        );
         $this->repository->setMethod($requestMethod);
         $this->repository->setFormInstance($form);
         $this->handler->apply($this->repository, $request);

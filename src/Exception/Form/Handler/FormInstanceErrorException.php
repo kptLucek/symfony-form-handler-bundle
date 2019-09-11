@@ -18,7 +18,9 @@ class FormInstanceErrorException extends ApiFormException
      */
     public static function missingClass(string $class): FormInstanceErrorException
     {
-        return new FormInstanceErrorException(sprintf('Class "%s" was not found.', $class));
+        return new FormInstanceErrorException(
+            sprintf('Class "%s" was not found.', $class)
+        );
     }
 
     /**
@@ -29,7 +31,9 @@ class FormInstanceErrorException extends ApiFormException
      */
     public static function notInstanceOf(string $class, string $expected): FormInstanceErrorException
     {
-        return new FormInstanceErrorException(sprintf('Class "%s" is not an instance of "%s".', $class, $expected));
+        return new FormInstanceErrorException(
+            sprintf('Class "%s" is not an instance of "%s".', $class, $expected)
+        );
     }
 
     /**
@@ -37,6 +41,9 @@ class FormInstanceErrorException extends ApiFormException
      */
     public static function formNotPresent(): FormInstanceErrorException
     {
-        return new FormInstanceErrorException('Instance of "%s" was not found in model.', FormInterface::class);
+        return new FormInstanceErrorException(
+            'Instance of "%s" was not found in model.',
+            FormInterface::class
+        );
     }
 }

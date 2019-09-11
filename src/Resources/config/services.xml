@@ -1,32 +1,44 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <container
-        xmlns="http://symfony.com/schema/dic/services"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://symfony.com/schema/dic/services"
         xsi:schemaLocation="http://symfony.com/schema/dic/services
         https://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <services>
-        <service id="lucek.form_handler.event_listener.form_handler_method_annotation_listener" class="Lucek\FormHandlerBundle\Event\Listener\FormHandlerMethodAnnotationListener" autowire="false">
+        <service id="lucek.form_handler.event_listener.form_handler_method_annotation_listener"
+                 class="Lucek\FormHandlerBundle\Event\Listener\FormHandlerMethodAnnotationListener" autowire="false">
             <tag name="kernel.event_listener" event="annotation.method" method="onMethodAnnotation"/>
         </service>
-        <service id="lucek.form_handler.event_listener.post_form_handler_method_annotation_listener" class="Lucek\FormHandlerBundle\Event\Listener\ApplyFormPostAnnotationListener" autowire="false">
+        <service id="lucek.form_handler.event_listener.post_form_handler_method_annotation_listener"
+                 class="Lucek\FormHandlerBundle\Event\Listener\ApplyFormPostAnnotationListener" autowire="false">
             <argument type="service" id="lucek.form_handler.request.form_request_factory"/>
             <tag name="kernel.event_listener" event="post.annotation" method="postAnnotation"/>
         </service>
-        <service id="lucek.form_handler.event_listener.kernel_request_json_converter" class="Lucek\FormHandlerBundle\Event\Listener\KernelRequestJsonConverter" autowire="false">
+        <service id="lucek.form_handler.event_listener.kernel_request_json_converter"
+                 class="Lucek\FormHandlerBundle\Event\Listener\KernelRequestJsonConverter" autowire="false">
             <tag name="kernel.event_listener" event="kernel.request" method="onRequest"/>
         </service>
-        <service id="lucek.form_handler.request.form_request_factory" class="Lucek\FormHandlerBundle\Request\FormRequestFactory" autowire="false">
+        <service id="lucek.form_handler.request.form_request_factory"
+                 class="Lucek\FormHandlerBundle\Request\FormRequestFactory" autowire="false">
             <argument type="service" id="router"/>
             <argument type="service" id="form.factory"/>
             <argument type="service" id="lucek.form_handler.form.handler.form_request_handler"/>
             <argument type="service" id="lucek.form_handler.repository.form_request_repository"/>
         </service>
-        <service id="lucek.form_handler.repository.form_request_repository" class="Lucek\FormHandlerBundle\Repository\FormRequestRepository" autowire="false"/>
-        <service id="lucek.form_handler.event.event_factory" class="Lucek\FormHandlerBundle\Event\Factory\FormHandlerEventFactory" autowire="false"/>
-        <service id="lucek.form_handler.form.handler.form_request_handler" class="Lucek\FormHandlerBundle\Form\Handler\FormHandlerEventFactory" autowire="false">
+        <service id="lucek.form_handler.form.handler.form_request_handler"
+                 class="Lucek\FormHandlerBundle\Form\Handler\FormRequestHandler" autowire="false">
+            <argument type="service" id="event_dispatcher"/>
+            <argument type="service" id="lucek.form_handler.event.event_factory"/>
             <argument type="service" id="lucek.form_handler.form.validation.form_validation_extractor"/>
         </service>
-        <service id="lucek.form_handler.form.validation.form_validation_extractor" class="Lucek\FormHandlerBundle\Form\Validation\FormValidationExtractor" autowire="false"/>
+        <service id="lucek.form_handler.repository.form_request_repository"
+                 class="Lucek\FormHandlerBundle\Repository\FormRequestRepository" autowire="false"/>
+        <service id="lucek.form_handler.event.event_factory"
+                 class="Lucek\FormHandlerBundle\Event\Factory\FormHandlerEventFactory" autowire="false">
+            <argument type="service" id="lucek.form_handler.form.validation.form_validation_extractor"/>
+        </service>
+        <service id="lucek.form_handler.form.validation.form_validation_extractor"
+                 class="Lucek\FormHandlerBundle\Form\Validation\FormValidationExtractor" autowire="false"/>
     </services>
 </container>

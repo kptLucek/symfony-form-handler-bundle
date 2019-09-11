@@ -2,7 +2,6 @@
 
 namespace Lucek\FormHandlerBundle\Event\Factory;
 
-use Lucek\ControllerAnnotationReaderBundle\Event\PostAnnotationEvent;
 use Lucek\FormHandlerBundle\Event\AbstractFormHandlerEvent;
 use Lucek\FormHandlerBundle\Event\PostFormHandlerEvent;
 use Lucek\FormHandlerBundle\Event\PreFormHandlerEvent;
@@ -28,6 +27,7 @@ class FormHandlerEventFactory
 
         return $event;
     }
+
     /**
      * @param FormInterface $form
      * @param array         $validation

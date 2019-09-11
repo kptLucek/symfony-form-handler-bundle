@@ -3,7 +3,6 @@ declare(strict_types=1);
 
 namespace Lucek\FormHandlerBundle\Form\Validation;
 
-use Symfony\Component\Form\Form;
 use Symfony\Component\Form\FormInterface;
 
 /**
