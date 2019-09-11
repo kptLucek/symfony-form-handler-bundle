@@ -46,4 +46,4 @@ The `FormRequestRepository` is **mutable** service, and is shared between servic
 ## 7. Validation
 In order to work with validation (symfony-based) you have to install additional package (if missing) `symfony/validator`, then simply add `constraints` to your form, or work with `validation_groups` in form and create Assertions for your model.
 
-To keep validation error structure same as configured form (with nesting), remember to work with `error_bubbling` and keep this property set to `false` (default value) for every form field.
+To keep validation error structure same as configured form (with nesting), remember to work with `error_bubbling` and keep this property set to `false` (default value) for every form field / nested form.
