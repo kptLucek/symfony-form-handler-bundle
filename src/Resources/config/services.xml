@@ -15,10 +15,6 @@
             <argument type="service" id="lucek.form_handler.request.form_request_factory"/>
             <tag name="kernel.event_listener" event="post.annotation" method="postAnnotation"/>
         </service>
-        <service id="lucek.form_handler.event_listener.kernel_request_json_converter"
-                 class="Lucek\FormHandlerBundle\Event\Listener\KernelRequestJsonConverter" autowire="false">
-            <tag name="kernel.event_listener" event="kernel.request" method="onRequest"/>
-        </service>
         <service id="lucek.form_handler.request.form_request_factory"
                  class="Lucek\FormHandlerBundle\Request\FormRequestFactory" autowire="false">
             <argument type="service" id="router"/>
